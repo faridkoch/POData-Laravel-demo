@@ -3,6 +3,12 @@
     "description": "Expose Odata services from laravel",
     "keywords": ["laravel", "Odata", "services", "POData"],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/faridkoch/POData-demo.git"
+        }
+    ],
     "require": {
         "faridkoch/podata-demo": "dev-master",
         "doctrine/dbal": "^2.5",
@@ -25,12 +31,6 @@
             "tests/"
         ]
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/faridkoch/POData-demo.git"
-        }
-    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 
