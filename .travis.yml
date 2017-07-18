@@ -1,0 +1,34 @@
+language: php
+
+php:
+  - 5.6.29
+  - 7.0
+  - 7.1
+  - nightly
+  
+before_script:
+  - mkdir -p bootstrap/cache
+  - chmod 777 bootstrap/cache
+  - ls -al bootstrap/
+  - ls -al bootstrap/cache
+  - composer global require hirak/prestissimo
+  - composer require laravel/framework:${LARAVEL_DEP} --no-update
+  - composer install
+
+script:
+  - mkdir -p build/logs
+  - phpunit --coverage-clover build/logs/clover.xml
+
+after_script:
+  - php vendor/bin/coveralls --exclude-no-stmt
+
+after_success:
+  - coveralls
+
+env: # important!
+  - LARAVEL_DEP=5.1.*
+  - LARAVEL_DEP=">5.1.11"
+matrix:
+  allow_failures:
+  - php: nightly
+
